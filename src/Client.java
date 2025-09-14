@@ -2,14 +2,17 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class Client implements Observer {
-    public Subject1 subject;
-    public void setSubject(Subject1 subject){
-        this.subject = subject;
-        subject.addObserver(this);
+    public IDependency iDependency;
+
+    public void setSubject(IDependency iDependency){
+        this.iDependency = iDependency;
+        iDependency.addObservers(this);
     }
 
     @Override
     public void update(Observable o, Object arg) {
+
         System.out.printf("Client has been modified: %d%n" , arg);
     }
+
 }
