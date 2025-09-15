@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public abstract class Subject implements ISubject {
+public abstract class ICU implements IICU {
     public ArrayList<IWatcher> Watchers = new ArrayList<>();
     @Override
     public void addWatcher(IWatcher watcher) {
@@ -13,9 +13,9 @@ public abstract class Subject implements ISubject {
             w.update(rate);
         }
     }
-    public static void setWatchers(ISubject iSubject , String patientName){
-        iSubject.addWatcher(new PCPatientWatcher(patientName));
-        iSubject.addWatcher(new PDAPatientWatcher(patientName));
+    public static void setWatchers(IICU IICU, String patientName){
+        IICU.addWatcher(new PCPatientWatcher(patientName));
+        IICU.addWatcher(new PDAPatientWatcher(patientName));
     }
     public abstract void PrintRate(double rate);
 }
